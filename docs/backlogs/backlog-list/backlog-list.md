@@ -3,7 +3,7 @@
 | Mã Backlog | Tên Backlog |
 | :--- | :--- |
 | **MC-01** | Thiết kế sơ đồ thực thể (ERD) và khởi tạo cơ sở dữ liệu PostgreSQL. |
-| **MC-02** | Thiết lập cấu trúc dự án Frontend (React.js) và Backend (Python/FastAPI). |
+| **MC-02** | Thiết lập cấu trúc dự án Frontend (Next.js) và Backend (Python/FastAPI). |
 | **MC-03** | Xác thực người dùng (JWT) và Kiểm soát đăng ký tài khoản (Chống spam SĐT). |
 | **MC-04** | Quản lý Bác sĩ, Chuyên khoa, Vị trí và Thiết lập Lịch trực cho Admin. |
 | **MC-05** | Quản lý Danh mục Y tế chuẩn hóa: Thuốc và Mã bệnh lý ICD-10. |
@@ -17,3 +17,6 @@
 | **MC-13** | Trợ lý AI Bác sĩ: Tóm tắt bệnh sử trọn đời và Tự động sinh lời dặn y khoa. |
 | **MC-14** | Hệ thống Báo cáo thống kê và Biểu đồ trực quan về vận hành phòng khám. |
 | **MC-15** | Xây dựng quy trình logic tự động sinh mã định danh kép (Patient-ID & EMR-ID). |
+
+
+

@@ -118,7 +118,7 @@ git push origin feature/MC-03-auth
 ```
 - Truy cập vào trang GitHub của dự án.
 - Nhấn nút **New Pull Request**.
-- Chọn **Base: `develop`** và **Compare: `feature/MC-03-auth`** (Lưu ý: Luôn chọn Base là `develop`, không được gộp vào `main`).
+- Chọn **Base: `develop`** và **Compare: ` /MC-03-auth`** (Lưu ý: Luôn chọn Base là `develop`, không được gộp vào `main`).
 - Viết mô tả ngắn gọn những gì bạn đã làm và tag Trưởng nhóm/Reviewer vào để duyệt.
 
 #### Bước 5: Review code và gộp nhánh (Merge PR)
