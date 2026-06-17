@@ -79,23 +79,71 @@ Ví dụ commit hợp lệ:
 - `[fix] [MC-08] Sửa lỗi WebSocket mất kết nối khi chuyển trang Dashboard`
 - `[docs] [MC-01] Cập nhật hình ảnh sơ đồ ERD mới nhất vào README`
 
-thành viên dùng
+### 3.3. Quy trình làm việc với Git cho lập trình viên (Developer Git Workflow)
 
-# Lấy code mới nhất
+Để đảm bảo dự án chạy trơn tru và không bị đè code lẫn nhau, tất cả các thành viên phải tuân thủ nghiêm ngặt quy trình 5 bước sau:
+
+#### Bước 1: Đồng bộ mã nguồn mới nhất từ nhóm
+Trước khi bắt đầu code bất kỳ tính năng nào, bạn phải lấy code mới nhất từ nhánh `develop` về máy:
+```bash
+# Chuyển về nhánh develop
 git checkout develop
+
+# Kéo code mới nhất từ GitHub về máy
 git pull origin develop
+```
 
-# Tạo task mới
-git checkout -b feature/task-name
+#### Bước 2: Tạo nhánh tính năng (Feature branch) mới
+Luôn tạo nhánh mới từ nhánh `develop` sạch và đặt tên nhánh theo chuẩn `feature/[mã-task]-[tên-tính-năng]`:
+```bash
+# Tạo và chuyển sang nhánh mới
+git checkout -b feature/MC-03-auth
+```
 
-# Commit
+#### Bước 3: Code và Commit cục bộ
+Viết code cho tính năng được giao. Thực hiện commit thường xuyên trên máy cá nhân theo đúng định dạng message chuẩn:
+```bash
+# Lưu trữ các file đã chỉnh sửa vào staging area
 git add .
-git commit -m "Add feature"
 
-# Push
-git push origin feature/task-name
+# Commit kèm thông điệp chuẩn (có mã backlog)
+git commit -m "[feat] [MC-03] Thiết kế màn hình đăng nhập Next.js"
+```
 
-# Tạo Pull Request lên develop
+#### Bước 4: Đẩy nhánh lên GitHub và tạo Pull Request (PR)
+Khi tính năng đã hoàn thành và test chạy ổn trên máy cá nhân:
+```bash
+# Đẩy nhánh phụ của bạn lên server GitHub
+git push origin feature/MC-03-auth
+```
+- Truy cập vào trang GitHub của dự án.
+- Nhấn nút **New Pull Request**.
+- Chọn **Base: `develop`** và **Compare: `feature/MC-03-auth`** (Lưu ý: Luôn chọn Base là `develop`, không được gộp vào `main`).
+- Viết mô tả ngắn gọn những gì bạn đã làm và tag Trưởng nhóm/Reviewer vào để duyệt.
+
+#### Bước 5: Review code và gộp nhánh (Merge PR)
+- Trưởng nhóm hoặc thành viên khác sẽ vào xem xét code (Code Review).
+- Nếu code chuẩn và không có lỗi, PR sẽ được **Merge** vào nhánh `develop`.
+- Sau khi nhánh phụ được gộp thành công trên GitHub, bạn hãy xoá nhánh phụ đó đi để làm sạch repo và quay lại **Bước 1** để nhận task mới.
+
+---
+
+#### 💡 Cách xử lý khi xảy ra xung đột code (Merge Conflict)
+Xung đột xảy ra khi bạn và thành viên khác cùng sửa chung một dòng code trên cùng một file. Cách giải quyết:
+1. Từ nhánh tính năng của bạn (`feature/MC-xx`), gộp nhánh `develop` mới nhất vào:
+   ```bash
+   git checkout develop
+   git pull origin develop
+   git checkout feature/MC-xx
+   git merge develop
+   ```
+2. IDE (VS Code) sẽ cảnh báo các dòng bị xung đột (màu đỏ/xanh). Bạn hãy trao đổi với thành viên kia để chọn giữ lại đoạn code nào (Accept Current / Incoming or Both).
+3. Sau khi sửa xong, lưu file và chạy:
+   ```bash
+   git add .
+   git commit -m "[fix] Giải quyết xung đột code với develop"
+   git push origin feature/MC-xx
+   ```
 
 ---
 
