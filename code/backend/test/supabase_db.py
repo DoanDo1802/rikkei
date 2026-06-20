@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from supabase import create_client, Client
 
 # Load environment variables from .env file
-env_path = Path(__file__).parent / '.env'
+env_path = Path(__file__).parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
 class SupabaseDB:
